@@ -1,0 +1,282 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;background:#0A0A0F">
+<title>Plan BUILD #004 · Yedric</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#0A0A0F; --surface:#13131B; --surface-2:#1A1A25; --line:#2A2A3A;
+  --fg:#F2F2F6; --mute:#A0A0B4; --lime:#C8FF3D; --lime-ink:#0A0A0F; --violet:#8B6DFF; --warn:#FFB84D;
+  --display:"Anton",Impact,"Arial Narrow",sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6;margin:0;padding:0 18px}
+.wrap{max-width:760px;margin:0 auto;padding-block:40px 80px;display:flex;flex-direction:column;gap:56px}
+a{color:var(--lime)}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-weight:700;font-size:14px;color:var(--fg);text-decoration:none}
+.mk{position:relative;width:34px;height:34px;flex:none}
+.mk i{position:absolute;width:24px;height:24px;border-radius:6px}
+.mk i:first-child{left:0;top:0;border:3px solid var(--lime);opacity:.55}
+.mk i:last-child{left:10px;top:10px;background:var(--lime)}
+header{display:flex;flex-direction:column;gap:22px}
+.eyebrow{font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lime)}
+h1{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(44px,9vw,76px);line-height:.98;margin:0;text-wrap:balance}
+h1 em{font-style:normal;color:var(--lime)}
+.lede{font-size:19px;color:var(--mute);margin:0;max-width:62ch}
+.lede b{color:var(--fg)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.facts div{background:var(--surface);padding:16px 18px;min-width:0}
+.facts dt{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.facts dd{margin:4px 0 0;font-weight:800;font-size:20px;font-variant-numeric:tabular-nums}
+section{display:flex;flex-direction:column;gap:18px}
+h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(30px,5.5vw,40px);line-height:1.05;margin:0;text-wrap:balance}
+h3{font-size:19px;font-weight:800;margin:0}
+p{margin:0}
+.muted{color:var(--mute)}
+ul.clean{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+ul.clean li{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start}
+ul.clean li:before{content:"";width:12px;height:12px;margin-top:8px;border-radius:3px;background:var(--lime)}
+ul.clean li.out:before{background:transparent;border:2px solid var(--mute)}
+.angle{background:var(--lime);color:var(--lime-ink);border-radius:20px;padding:24px 26px;display:flex;flex-direction:column;gap:10px}
+.angle .eyebrow{color:var(--lime-ink);opacity:.7}
+.angle p{font-weight:700;font-size:19px;line-height:1.45}
+.mvp{display:grid;gap:12px}
+.feat{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;padding:18px 20px;background:var(--surface);border:1px solid var(--line);border-radius:16px}
+.feat .tag{grid-row:span 2;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--lime);border:1.5px solid var(--lime);border-radius:999px;padding:3px 10px;align-self:start;white-space:nowrap}
+.feat .tag.opt{color:var(--mute);border-color:var(--mute)}
+.feat p{color:var(--mute);font-size:15.5px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:15.5px}
+th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);background:var(--surface);font-weight:700}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:700;white-space:nowrap}
+td code{font-family:var(--mono);font-size:14px;color:var(--lime)}
+.days{display:flex;flex-direction:column;gap:18px}
+.day{border:1px solid var(--line);border-radius:20px;background:var(--surface);overflow:hidden}
+.day-head{display:flex;align-items:baseline;gap:16px;padding:20px 22px 0}
+.day-n{font-family:var(--display);font-size:46px;line-height:1;color:var(--lime);flex:none}
+.day-head h3{font-size:20px}
+.day-body{padding:14px 22px 22px;display:flex;flex-direction:column;gap:14px}
+.day-body ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.done{font-size:15px;color:var(--fg);background:var(--surface-2);border-radius:12px;padding:12px 14px}
+.done b{color:var(--lime);font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:2px}
+.prompt{border:1px dashed #3C3C52;border-radius:14px;background:var(--bg);overflow:hidden}
+.prompt-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px 10px 14px;border-bottom:1px dashed #3C3C52}
+.prompt-bar span{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--mute);text-transform:uppercase}
+.copy{font-family:var(--mono);font-size:13px;font-weight:700;background:var(--lime);color:var(--lime-ink);border:0;border-radius:999px;padding:7px 14px;cursor:pointer}
+.copy:focus-visible{outline:3px solid var(--violet);outline-offset:2px}
+.prompt pre{margin:0;padding:14px;font-family:var(--mono);font-size:13.5px;line-height:1.6;white-space:pre-wrap;word-break:break-word;color:#D8D8E4}
+.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.tier{padding:20px;border-radius:18px;border:1px solid var(--line);background:var(--surface);display:flex;flex-direction:column;gap:8px}
+.tier.hi{border-color:var(--lime);box-shadow:0 0 0 1px var(--lime) inset}
+.tier .price{font-family:var(--display);font-size:38px;line-height:1}
+.tier .price small{font-family:var(--body);font-size:14px;color:var(--mute);font-weight:500}
+.tier p{font-size:15px;color:var(--mute)}
+.risk{display:grid;gap:10px}
+.risk div{padding:14px 18px;border-left:3px solid var(--warn);background:var(--surface);border-radius:0 12px 12px 0}
+.risk b{display:block}
+.risk span{color:var(--mute);font-size:15.5px}
+footer{border-top:1px solid var(--line);padding-top:28px;display:flex;flex-direction:column;gap:14px}
+footer .big{font-family:var(--display);text-transform:uppercase;font-size:30px;line-height:1.05}
+.small{font-size:13.5px;color:var(--mute)}
+@media (prefers-reduced-motion:no-preference){.copy{transition:transform .15s}.copy:active{transform:scale(.96)}}
+</style>
+
+<div class="wrap">
+  <header>
+    <a class="brand" href="https://www.instagram.com/startup.clone/"><span class="mk"><i></i><i></i></span>@startup.clone</a>
+    <span class="eyebrow">Plan BUILD #004 · Veille du 1er octobre 2026</span>
+    <h1>Recrée <em>Yedric</em> seul, en 5 jours</h1>
+    <p class="lede">Yedric est un widget IA embeddable qui permet aux utilisateurs d'un SaaS de le <b>piloter en langage naturel</b>. Au lieu de chercher dans les menus, l'utilisateur tape ce qu'il veut faire et le widget exécute l'action. Voici le plan pour construire ta propre version, pensée pour le marché francophone et européen, avec Claude Code.</p>
+    <dl class="facts">
+      <div><dt>Traction</dt><dd>~238 upvotes</dd></div>
+      <div><dt>Classement</dt><dd>#2 Product Hunt du jour</dd></div>
+      <div><dt>Build estimé</dt><dd>5 jours</dd></div>
+      <div><dt>Difficulté</dt><dd>3 / 5</dd></div>
+    </dl>
+  </header>
+
+  <section>
+    <h2>Pourquoi c'est un bon pari</h2>
+    <ul class="clean">
+      <li><span><b>Un besoin universel chez les SaaS.</b> <span class="muted">Chaque fondateur veut rendre son produit « AI-native », mais construire un agent conversationnel intégré est complexe et coûteux. Un widget clé en main qui s'intègre en 30 minutes résout ce problème.</span></span></li>
+      <li><span><b>Une demande prouvée aujourd'hui.</b> <span class="muted">238 upvotes et la 2e place de Product Hunt le jour du lancement. Le pitch « rends ton SaaS pilotable en parlant » parle directement aux développeurs.</span></span></li>
+      <li><span><b>Pas de concurrent direct en français/UE.</b> <span class="muted">Dust (français) est une plateforme complète d'assistants IA, pas un widget embeddable. IA Souveraine cible les grands comptes. Personne ne propose le widget plug-and-play avec hébergement UE et Mistral en option.</span></span></li>
+      <li><span><b>Techniquement abordable.</b> <span class="muted">Pas de modèle à entraîner : le function calling de Claude fait le gros du travail. Le reste, c'est un widget JS, un dashboard et des webhooks.</span></span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="angle">
+      <span class="eyebrow">Ton angle de différenciation</span>
+      <p>La version française et souveraine : widget hébergé en UE via Supabase, Mistral disponible comme modèle alternatif à Claude/GPT, conformité RGPD annoncée dès la page d'accueil, et documentation en français pour les développeurs SaaS francophones qui n'ont pas le temps de lire de la doc en anglais.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Le MVP</h2>
+    <p class="muted">Cinq fonctionnalités, pas une de plus pour la première version.</p>
+    <div class="mvp">
+      <div class="feat"><span class="tag">MVP</span><h3>Dashboard développeur</h3><p>Le créateur du SaaS enregistre ses actions (nom, description, paramètres). C'est le contrat entre le widget et le produit.</p></div>
+      <div class="feat"><span class="tag">MVP</span><h3>Widget JS embeddable</h3><p>Un bouton flottant qui ouvre un chat. S'intègre en une ligne de code sur n'importe quel site.</p></div>
+      <div class="feat"><span class="tag">MVP</span><h3>NL → Action (function calling)</h3><p>Claude reçoit le message + les actions disponibles, choisit la bonne et remplit les paramètres. Réponse en streaming.</p></div>
+      <div class="feat"><span class="tag">MVP</span><h3>Webhooks vers le SaaS</h3><p>Quand Claude choisit une action, un POST part au webhook configuré. Le SaaS exécute et renvoie le résultat.</p></div>
+      <div class="feat"><span class="tag">MVP</span><h3>Personnalisation du widget</h3><p>Couleur d'accent, position, message d'accueil, avatar. Prévisualisation en temps réel dans le dashboard.</p></div>
+    </div>
+    <ul class="clean">
+      <li class="out"><span class="muted">Hors V1 : analytics avancés, support multi-langues automatique, marketplace de connecteurs pré-faits, SDK React/Vue natif.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>La stack</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Brique</th><th>Choix</th><th>Pourquoi</th></tr></thead>
+        <tbody>
+          <tr><td>Front + API</td><td><code>Next.js</code> + Tailwind</td><td>Un seul projet pour le dashboard, la landing et les routes API.</td></tr>
+          <tr><td>Intelligence</td><td>API Anthropic (Claude)</td><td>Function calling natif pour mapper NL → actions structurées.</td></tr>
+          <tr><td>Widget</td><td>Script JS vanilla</td><td>Léger, sans dépendances, s'intègre partout.</td></tr>
+          <tr><td>Auth + base</td><td><code>Supabase</code></td><td>Lien magique, Postgres, Row Level Security. Région UE disponible.</td></tr>
+          <tr><td>Paiement</td><td><code>Stripe</code></td><td>Abonnement mensuel via Checkout, en quelques heures.</td></tr>
+          <tr><td>Hébergement</td><td><code>Vercel</code></td><td>Déploiement à chaque push, offre gratuite pour démarrer.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Le plan jour par jour</h2>
+    <p class="muted">Chaque jour a son prompt prêt à coller dans Claude Code. Lance-le dans un dossier vide, puis relis et teste avant de passer au suivant.</p>
+    <div class="days">
+
+      <article class="day">
+        <div class="day-head"><span class="day-n">J1</span><h3>Le widget et le dashboard</h3></div>
+        <div class="day-body">
+          <ul><li>Créer le projet Next.js et le dashboard développeur.</li><li>Formulaire pour enregistrer les actions du SaaS (nom, description, paramètres).</li><li>Widget JS embedable : bouton flottant → chat.</li></ul>
+          <div class="done"><b>Fin de journée</b>Un développeur enregistre ses actions et voit le widget apparaître sur une page de test.</div>
+          <div class="prompt"><div class="prompt-bar"><span>Prompt Claude Code · J1</span><button class="copy" type="button">Copier</button></div>
+<pre>Crée une application Next.js (App Router, TypeScript, Tailwind), interface en français.
+Page /dashboard : formulaire pour enregistrer des « actions » que le SaaS sait faire. Chaque action a un nom, une description et des paramètres définis en JSON Schema. Stocke-les en mémoire/fichiers JSON pour l'instant (la base arrive au jour 4).
+Crée un composant React &lt;YedricWidget /&gt; : un bouton flottant en bas à droite qui ouvre un panneau de chat. L'utilisateur tape une phrase, le widget l'envoie à /api/chat avec l'identifiant de l'app et la liste des actions enregistrées.
+Génère aussi un snippet &lt;script&gt; embedable qui charge le widget sur n'importe quel site externe (iframe ou shadow DOM).
+Ajoute un fichier .env.example et un README expliquant comment lancer le projet.</pre></div>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="day-head"><span class="day-n">J2</span><h3>L'intelligence : NL → Action</h3></div>
+        <div class="day-body">
+          <ul><li>Brancher l'API Claude avec function calling sur /api/chat.</li><li>Le backend traduit le message en action structurée.</li><li>Réponse en streaming dans le widget.</li></ul>
+          <div class="done"><b>Fin de journée</b>Un utilisateur tape « crée un projet Marketing » et le widget identifie l'action et les paramètres.</div>
+          <div class="prompt"><div class="prompt-bar"><span>Prompt Claude Code · J2</span><button class="copy" type="button">Copier</button></div>
+<pre>Branche l'API Claude (SDK Anthropic) sur la route /api/chat :
+- Envoie le message utilisateur + la liste des actions enregistrées sous forme de tools (function calling / tool_use).
+- Claude choisit l'action et ses paramètres, ou répond en texte si aucune action ne correspond.
+- Affiche la réponse en streaming dans le widget (utilise ReadableStream).
+- Ajoute un historique de conversation par session (stocké côté client dans le state du widget).
+- Ajoute une page /dashboard/test avec un widget intégré et un panneau latéral qui affiche en temps réel l'action choisie par Claude et ses paramètres.
+Gère les erreurs : si Claude ne trouve pas d'action, il répond poliment en texte.</pre></div>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="day-head"><span class="day-n">J3</span><h3>Webhooks et personnalisation</h3></div>
+        <div class="day-body">
+          <ul><li>Système de webhooks vers le SaaS du développeur.</li><li>Gestion des réponses et erreurs.</li><li>Personnalisation visuelle du widget.</li></ul>
+          <div class="done"><b>Fin de journée</b>Quand l'utilisateur demande une action, le SaaS la reçoit par webhook et le résultat s'affiche dans le chat.</div>
+          <div class="prompt"><div class="prompt-bar"><span>Prompt Claude Code · J3</span><button class="copy" type="button">Copier</button></div>
+<pre>Ajoute un système de webhooks :
+- Dans le dashboard, le développeur renseigne une URL de webhook globale ou par action.
+- Quand Claude choisit une action, le backend envoie un POST JSON au webhook avec le nom de l'action, les paramètres et un token de vérification.
+- Le SaaS répond avec un JSON (succès/erreur + message). Affiche le résultat dans le chat.
+- Ajoute une page /dashboard/logs : historique des webhooks envoyés (date, action, statut, durée).
+- Ajoute un onglet /dashboard/style : personnalisation du widget (couleur d'accent en hex, position bas-droite ou bas-gauche, message d'accueil, URL d'avatar). Prévisualisation en temps réel à côté du formulaire.
+- Le snippet embed prend ces réglages en compte automatiquement.</pre></div>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="day-head"><span class="day-n">J4</span><h3>Comptes et paiement</h3></div>
+        <div class="day-body">
+          <ul><li>Auth Supabase et base de données.</li><li>Abonnement Stripe.</li><li>Quotas et analytics basiques.</li></ul>
+          <div class="done"><b>Fin de journée</b>Un développeur crée un compte, enregistre son app, et passe en Pro pour débloquer les requêtes illimitées.</div>
+          <div class="prompt"><div class="prompt-bar"><span>Prompt Claude Code · J4</span><button class="copy" type="button">Copier</button></div>
+<pre>Ajoute Supabase au projet :
+- Authentification par lien magique (email).
+- Tables : apps (id, user_id, name, webhook_url, widget_config en JSON), actions (id, app_id, name, description, parameters_schema en JSON), logs (id, app_id, action_name, input, output, status, created_at), avec Row Level Security.
+- Migre le stockage JSON vers Supabase.
+Intègre Stripe :
+- Stripe Checkout pour un abonnement mensuel « Pro » à 19 €.
+- Webhook Stripe qui met à jour le statut du profil (free / pro) dans Supabase.
+- Plan gratuit : 100 requêtes/mois, 5 actions max, 1 app. Compteur vérifié côté serveur.
+- Portail client Stripe pour gérer l'abonnement.
+Ajoute un tableau de bord analytics : nombre de requêtes ce mois, actions les plus utilisées, taux de succès des webhooks.
+Donne-moi le SQL de migration à exécuter dans Supabase.</pre></div>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="day-head"><span class="day-n">J5</span><h3>Landing page et mise en ligne</h3></div>
+        <div class="day-body">
+          <ul><li>Page d'accueil avec démo interactive.</li><li>Documentation développeur.</li><li>Déploiement sur Vercel.</li></ul>
+          <div class="done"><b>Fin de journée</b>Le produit est en ligne, prêt à être présenté aux premiers développeurs.</div>
+          <div class="prompt"><div class="prompt-bar"><span>Prompt Claude Code · J5</span><button class="copy" type="button">Copier</button></div>
+<pre>Crée la page d'accueil en français :
+- Titre accrocheur : « Tes utilisateurs pilotent ton SaaS en parlant ».
+- Démo interactive : un faux widget avec des actions pré-remplies (créer un projet, chercher un client, envoyer une facture) que le visiteur peut tester en direct.
+- 3 bénéfices : intégration en 30 min, moins de tickets support, tes utilisateurs adoptent les features cachées.
+- Section « Comment ça marche » en 3 étapes (enregistre tes actions, colle le snippet, tes utilisateurs parlent).
+- Grille tarifaire (Gratuit / Pro 19 €/mois).
+- FAQ centrée sur la sécurité et le RGPD (hébergement UE, données chiffrées, aucun accès aux données utilisateur).
+Ajoute une page /docs : guide d'intégration pas à pas avec exemples de code (curl, JavaScript, React).
+Ajoute les pages Mentions légales et Politique de confidentialité, les métadonnées SEO et les images Open Graph.
+Liste toutes les variables d'environnement à configurer sur Vercel.</pre></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Comment gagner de l'argent</h2>
+    <div class="pricing">
+      <div class="tier"><span class="eyebrow">Gratuit</span><div class="price">0 €</div><p>100 requêtes/mois, 5 actions, 1 app. Sert à faire découvrir et tester l'intégration.</p></div>
+      <div class="tier hi"><span class="eyebrow">Pro</span><div class="price">19 € <small>/ mois</small></div><p>Requêtes et actions illimitées, personnalisation complète, analytics, support prioritaire.</p></div>
+      <div class="tier"><span class="eyebrow">Sur devis</span><div class="price">—</div><p>Grandes équipes, SLA garanti, modèle dédié (Mistral, GPT), connecteurs sur mesure.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Les risques à connaître</h2>
+    <div class="risk">
+      <div><b>La latence</b><span>Chaque requête passe par Claude : 1 à 3 secondes de délai. Le streaming masque une partie de l'attente, mais certains utilisateurs préféreront toujours cliquer. Propose les deux.</span></div>
+      <div><b>Le coût des API</b><span>Chaque message utilise des tokens Claude. Le plan gratuit (100 requêtes/mois) et le prix Pro (19 €) doivent couvrir le coût moyen par requête. Surveille ta marge dès la première semaine.</span></div>
+      <div><b>La sécurité</b><span>Le widget a accès aux actions du SaaS via webhooks. Un utilisateur malveillant pourrait tenter des injections de prompt pour déclencher des actions non souhaitées. Ajoute une confirmation côté SaaS pour les actions sensibles.</span></div>
+      <div><b>La concurrence arrivera</b><span>Yedric a une longueur d'avance, et Intercom ou Zendesk pourraient ajouter cette fonctionnalité. Ton avantage : la simplicité, le positionnement développeur solo, et le RGPD.</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="big">Une nouvelle idée <span style="color:var(--lime)">chaque soir</span></p>
+    <p class="muted">Suis <a href="https://www.instagram.com/startup.clone/">@startup.clone</a> sur Instagram, TikTok et YouTube. Commente BUILD sous une vidéo pour recevoir le plan suivant.</p>
+    <p class="small">Chiffres de traction observés sur Product Hunt le 1er octobre 2026. Le chiffre « intégration en 30 minutes » est celui avancé par Yedric, non vérifié de façon indépendante. Les estimations de temps supposent des bases en développement web et l'usage de Claude Code.</p>
+  </footer>
+</div>
+
+<script>
+document.querySelectorAll('.copy').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const pre=btn.closest('.prompt').querySelector('pre');
+    const done=()=>{btn.textContent='Copié';setTimeout(()=>btn.textContent='Copier',1600)};
+    const fallback=()=>{const r=document.createRange();r.selectNodeContents(pre);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Sélectionné';setTimeout(()=>btn.textContent='Copier',1600)};
+    try{navigator.clipboard.writeText(pre.textContent).then(done,fallback)}catch(e){fallback()}
+  });
+});
+</script>
+
+</body></html>
