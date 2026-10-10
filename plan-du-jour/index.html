@@ -1,9 +1,10 @@
 <!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;background:#0A0A0F">
-<title>Plan BUILD #008 · Deskcord</title>
+<title>Plan BUILD #009 · Onepin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
 <style>
+/* Layout: single reading column, brand header, numbered day timeline, prompt blocks with copy */
 :root{
   --bg:#0A0A0F; --surface:#13131B; --surface-2:#1A1A25; --line:#2A2A3A;
   --fg:#F2F2F6; --mute:#A0A0B4; --lime:#C8FF3D; --lime-ink:#0A0A0F; --violet:#8B6DFF; --warn:#FFB84D;
@@ -89,13 +90,13 @@ footer .big{font-family:var(--display);text-transform:uppercase;font-size:30px;l
 <div class="wrap"><style>.sc-banner{font-family:var(--mono,monospace);font-size:14px;background:var(--surface,#13131B);border:1px solid var(--line,#2A2A3A);border-radius:14px;padding:12px 16px;color:var(--mute,#A0A0B4)}.sc-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1px;background:var(--line,#2A2A3A);border:1px solid var(--line,#2A2A3A);border-radius:18px;overflow:hidden}.sc-list a{display:flex;gap:14px;align-items:baseline;padding:14px 18px;background:var(--surface,#13131B);color:var(--fg,#F2F2F6);text-decoration:none}.sc-list a:hover{background:var(--surface-2,#1A1A25)}.sc-n{font-family:var(--mono,monospace);font-weight:700;color:var(--lime,#C8FF3D)}.sc-t{font-weight:800;flex:1;min-width:0}.sc-d{font-size:14px;color:var(--mute,#A0A0B4);white-space:nowrap}</style><p class="sc-banner">Tu viens d'une ancienne vidéo ? <a href="#tous-les-plans">Retrouve ton plan dans la liste ↓</a></p>
   <header>
     <a class="brand" href="https://www.instagram.com/startup.clone/"><span class="mk"><i></i><i></i></span>@startup.clone</a>
-    <span class="eyebrow">Plan BUILD #008 · Veille du 5 octobre 2026</span>
-    <h1>Recrée <em>Deskcord</em> seul, en 3 jours</h1>
-    <p class="lede">Deskcord transforme ton serveur <b>Discord en helpdesk</b> : chaque conversation de tes visiteurs devient un thread Discord. Voici le plan pour construire ta propre version, open-source et auto-hébergeable, avec Claude Code.</p>
+    <span class="eyebrow">Plan BUILD #009 · Veille du 10 octobre 2026</span>
+    <h1>Recrée <em>Onepin</em> seul, en 4 jours</h1>
+    <p class="lede">Onepin est un agent IA de voix off qui <b>corrige automatiquement la prononciation des noms propres, prix et dates</b> avant de générer l'audio. Voici le plan pour construire ta propre version, pensée pour le marché francophone, avec Claude Code.</p>
     <dl class="facts">
-      <div><dt>Traction</dt><dd>75 upvotes</dd></div>
-      <div><dt>Source</dt><dd>Product Hunt</dd></div>
-      <div><dt>Build estimé</dt><dd>3 jours</dd></div>
+      <div><dt>Traction</dt><dd>242 upvotes</dd></div>
+      <div><dt>Classement</dt><dd>#1 Product Hunt du jour</dd></div>
+      <div><dt>Build estimé</dt><dd>4 jours</dd></div>
       <div><dt>Difficulté</dt><dd>2 / 5</dd></div>
     </dl>
   </header>
@@ -103,31 +104,32 @@ footer .big{font-family:var(--display);text-transform:uppercase;font-size:30px;l
   <section>
     <h2>Pourquoi c'est un bon pari</h2>
     <ul class="clean">
-      <li><span><b>Un besoin quotidien.</b> <span class="muted">Les petites équipes et freelances paient 25 à 40 €/mois pour un chat client (Crisp, Intercom) alors qu'ils communiquent déjà sur Discord gratuitement.</span></span></li>
-      <li><span><b>Une demande prouvée.</b> <span class="muted">75 upvotes sur Product Hunt le jour du lancement, un bot référencé sur top.gg, et un pricing validé entre 4 et 16 $/mois.</span></span></li>
-      <li><span><b>Pas de version open-source.</b> <span class="muted">Deskcord est propriétaire. Crisp (français, Nantes) ne fait pas de pont Discord natif. Chatwoot est open-source mais sans intégration Discord. Le créneau est libre.</span></span></li>
-      <li><span><b>Techniquement simple.</b> <span class="muted">Un bot Discord, un relay WebSocket et un snippet JS. Pas de modèle IA à entraîner, pas de données propriétaires.</span></span></li>
+      <li><span><b>Une douleur universelle.</b> <span class="muted">Quiconque utilise une voix off IA connaît le problème : les noms propres sont écorchés, les prix lus n'importe comment, les dates mal formatées. On passe du temps à ruser phonétiquement, segment par segment.</span></span></li>
+      <li><span><b>Une demande prouvée aujourd'hui même.</b> <span class="muted">242 upvotes et la 1re place de Product Hunt le jour du lancement. Onepin affirme travailler avec HeyGen, Hyundai et Johns Hopkins (chiffres du créateur, non vérifiés de façon indépendante).</span></span></li>
+      <li><span><b>Aucun concurrent français sur cet angle précis.</b> <span class="muted">ElevenLabs, Murf, Lovo et Fliki proposent des voix françaises mais aucun n'auto-détecte ni auto-corrige les noms, prix et dates. ElevenLabs offre un dictionnaire de prononciation mais il est 100 % manuel.</span></span></li>
+      <li><span><b>Techniquement simple.</b> <span class="muted">Pas de modèle à entraîner : un appel Claude pour détecter et réécrire, un appel ElevenLabs pour générer l'audio.</span></span></li>
     </ul>
   </section>
 
   <section>
     <div class="angle">
       <span class="eyebrow">Ton angle de différenciation</span>
-      <p>La version open-source et auto-hébergeable : zéro données stockées chez un tiers, déployable sur ton infra. Bonus : des réponses IA automatiques avec Claude quand l'équipe est absente.</p>
+      <p>La version française qui comprend les noms francophones, les prix en euros et les dates au format européen. Hébergement en UE, conformité RGPD. Cible : le créateur de contenu solo qui a besoin de 5 voix off par semaine, pas de 5 000.</p>
     </div>
   </section>
 
   <section>
     <h2>Le MVP</h2>
-    <p class="muted">Quatre fonctionnalités, pas une de plus pour la première version.</p>
+    <p class="muted">Cinq fonctionnalités, pas une de plus pour la première version.</p>
     <div class="mvp">
-      <div class="feat"><span class="tag">MVP</span><h3>Widget JS embarquable</h3><p>Un snippet &lt;script&gt; à coller sur n'importe quel site. Personnalisable : couleur, position, texte d'accueil. ~5 Ko.</p></div>
-      <div class="feat"><span class="tag">MVP</span><h3>Bot Discord + threads</h3><p>Chaque nouveau visiteur ouvre un thread dédié dans un canal Discord. Messages bidirectionnels en temps réel.</p></div>
-      <div class="feat"><span class="tag">MVP</span><h3>Relay WebSocket</h3><p>Serveur intermédiaire qui connecte le widget au bot Discord. Reconnexion automatique et indicateur de frappe.</p></div>
-      <div class="feat"><span class="tag">MVP</span><h3>Dashboard admin</h3><p>Interface web pour configurer le widget, connecter ton serveur Discord et gérer l'abonnement Stripe.</p></div>
+      <div class="feat"><span class="tag">MVP</span><h3>Éditeur de texte intelligent</h3><p>Colle ton script. L'app détecte et surligne les noms propres, prix, dates et abréviations via Claude.</p></div>
+      <div class="feat"><span class="tag">MVP</span><h3>Correction automatique</h3><p>Chaque élément détecté est réécrit en texte phonétiquement correct pour le moteur TTS.</p></div>
+      <div class="feat"><span class="tag">MVP</span><h3>Génération audio</h3><p>Le texte corrigé est envoyé à ElevenLabs en streaming. Choix de voix et de vitesse.</p></div>
+      <div class="feat"><span class="tag">MVP</span><h3>Score de qualité</h3><p>Un agent Claude transcrit le rendu et compare à l'original. Note par segment : correct, douteux, à refaire.</p></div>
+      <div class="feat"><span class="tag">MVP</span><h3>Dashboard et historique</h3><p>Liste des voix off générées, replay, re-génération d'un segment seul.</p></div>
     </div>
     <ul class="clean">
-      <li class="out"><span class="muted">Hors V1 : réponses IA automatiques, support Slack, application mobile dédiée, analytics de conversations.</span></li>
+      <li class="out"><span class="muted">Hors V1 : multi-langues, clonage de voix, intégration éditeur vidéo, API publique, batch processing.</span></li>
     </ul>
   </section>
 
@@ -137,13 +139,12 @@ footer .big{font-family:var(--display);text-transform:uppercase;font-size:30px;l
       <table>
         <thead><tr><th>Brique</th><th>Choix</th><th>Pourquoi</th></tr></thead>
         <tbody>
-          <tr><td>Front + Admin</td><td><code>Next.js</code> + Tailwind</td><td>Dashboard et landing page dans un seul projet.</td></tr>
-          <tr><td>Widget</td><td>Vanilla JS (~5 Ko)</td><td>Léger, aucune dépendance, s'intègre partout.</td></tr>
-          <tr><td>Bot Discord</td><td><code>discord.js</code></td><td>SDK officiel, threads et webhooks natifs.</td></tr>
-          <tr><td>Temps réel</td><td><code>Socket.io</code></td><td>WebSocket avec fallback et reconnexion auto.</td></tr>
-          <tr><td>Auth + base</td><td><code>Supabase</code></td><td>Auth par lien magique, Postgres, région UE disponible.</td></tr>
+          <tr><td>Front + API</td><td><code>Next.js</code> + Tailwind</td><td>Un seul projet pour l'interface et les routes serveur.</td></tr>
+          <tr><td>TTS</td><td>API <code>ElevenLabs</code></td><td>Meilleures voix françaises, SDK streaming, dictionnaire de prononciation.</td></tr>
+          <tr><td>Correction</td><td>API Anthropic (<code>Claude</code>)</td><td>Détection et réécriture des noms, prix, dates. Pas de modèle à entraîner.</td></tr>
+          <tr><td>Auth + base</td><td><code>Supabase</code></td><td>Lien magique, Postgres, sécurité par ligne. Région UE disponible.</td></tr>
           <tr><td>Paiement</td><td><code>Stripe</code></td><td>Abonnement mensuel via Checkout, en quelques heures.</td></tr>
-          <tr><td>Hébergement</td><td><code>Vercel</code> + <code>Railway</code></td><td>Vercel pour le front, Railway pour le serveur WebSocket.</td></tr>
+          <tr><td>Hébergement</td><td><code>Vercel</code></td><td>Déploiement à chaque push, offre gratuite pour démarrer.</td></tr>
         </tbody>
       </table>
     </div>
@@ -155,52 +156,66 @@ footer .big{font-family:var(--display);text-transform:uppercase;font-size:30px;l
     <div class="days">
 
       <article class="day">
-        <div class="day-head"><span class="day-n">J1</span><h3>Le cœur : bot Discord + relay</h3></div>
+        <div class="day-head"><span class="day-n">J1</span><h3>L'éditeur et la correction</h3></div>
         <div class="day-body">
-          <ul><li>Créer le bot Discord avec discord.js et les permissions nécessaires.</li><li>Gérer les threads : un thread par visiteur, auto-archivage après inactivité.</li><li>Monter le serveur WebSocket avec Socket.io.</li><li>Tester le flux complet : message → Discord → réponse → widget.</li></ul>
-          <div class="done"><b>Fin de journée</b>Tu envoies un message depuis un script de test, il apparaît dans un thread Discord. Tu réponds dans Discord, la réponse revient dans le script.</div>
+          <ul><li>Créer le projet Next.js et l'éditeur de texte.</li><li>Détection des noms, prix, dates via Claude API.</li><li>Affichage du texte corrigé avec surlignage des modifications.</li></ul>
+          <div class="done"><b>Fin de journée</b>Tu colles un script et les noms, prix et dates sont surlignés et corrigés automatiquement.</div>
           <div class="prompt"><div class="prompt-bar"><span>Prompt Claude Code · J1</span><button class="copy" type="button">Copier</button></div>
-<pre>Crée un projet Node.js (TypeScript) avec deux parties :
-1. Un bot Discord (discord.js v14) qui écoute un canal « support ». Quand il reçoit un message via le serveur WebSocket, il crée un thread (ou réutilise le thread existant pour ce visiteur, identifié par un UUID). Quand quelqu'un répond dans le thread, le bot envoie la réponse au serveur WebSocket.
-2. Un serveur Socket.io qui accepte les connexions des widgets. Chaque widget s'identifie par un visitorId (UUID). Les messages du widget sont relayés au bot Discord via un EventEmitter interne, et les réponses Discord sont renvoyées au bon widget via son socket.
-Ajoute un fichier .env.example (DISCORD_TOKEN, DISCORD_GUILD_ID, DISCORD_CHANNEL_ID, PORT) et un script de test en ligne de commande qui simule un visiteur.</pre></div>
+<pre>Crée une application Next.js (App Router, TypeScript, Tailwind), interface en français.
+Page principale : un éditeur de texte (textarea) où l'utilisateur colle son script de voix off.
+À la soumission, appelle une route /api/correct qui envoie le texte à l'API Claude avec ce prompt système : « Tu es un correcteur de prononciation pour la synthèse vocale française. Analyse le texte et renvoie un JSON avec : le texte corrigé (noms propres en phonétique naturelle, prix en toutes lettres, dates en format parlé, abréviations développées), et un tableau des modifications (position, original, corrigé, raison). »
+Affiche le texte corrigé avec les modifications surlignées en vert. L'utilisateur peut accepter ou rejeter chaque correction individuellement.
+Ajoute un fichier .env.example et un README.</pre></div>
         </div>
       </article>
 
       <article class="day">
-        <div class="day-head"><span class="day-n">J2</span><h3>Le widget + le dashboard</h3></div>
+        <div class="day-head"><span class="day-n">J2</span><h3>La génération audio</h3></div>
         <div class="day-body">
-          <ul><li>Créer le widget de chat en Vanilla JS avec Shadow DOM.</li><li>Personnalisation via attributs data- sur le script.</li><li>Connexion au serveur Socket.io.</li><li>Créer le projet Next.js pour le dashboard admin.</li></ul>
-          <div class="done"><b>Fin de journée</b>Tu colles un &lt;script&gt; sur une page HTML locale, le widget apparaît en bas à droite. Tu tapes un message, il arrive dans Discord, tu réponds, ça revient dans le widget.</div>
+          <ul><li>Intégration ElevenLabs API en streaming.</li><li>Choix de voix et vitesse de lecture.</li><li>Historique sauvegardé en base Supabase.</li></ul>
+          <div class="done"><b>Fin de journée</b>Tu génères un audio propre à partir de ton script corrigé, avec la voix de ton choix.</div>
           <div class="prompt"><div class="prompt-bar"><span>Prompt Claude Code · J2</span><button class="copy" type="button">Copier</button></div>
-<pre>Crée un widget de chat en Vanilla JS (~5 Ko minifié), interface en français :
-- Bouton flottant en bas à droite avec badge de notification
-- Fenêtre de chat : messages, champ de saisie, indicateur « en train d'écrire »
-- Se connecte au serveur Socket.io du jour 1 via un visitorId UUID (stocké en localStorage)
-- Personnalisable via attributs data- sur la balise script : data-color, data-position (left/right), data-welcome, data-company
-- Shadow DOM pour éviter les conflits CSS avec le site hôte
-- Distribué comme un seul fichier JS auto-exécutable
-Puis crée un projet Next.js (App Router, TypeScript, Tailwind) avec :
-- Page /dashboard : formulaire de configuration du widget (couleur, position, texte, Discord channel ID)
-- Aperçu en direct du widget dans un iframe
-- Route API /api/widget/[userId].js qui sert le JS du widget avec la config injectée</pre></div>
+<pre>Ajoute la génération audio au projet :
+- Route /api/generate qui prend le texte corrigé et l'envoie à l'API ElevenLabs (SDK officiel, streaming).
+- Sélecteur de voix (liste les voix françaises disponibles via l'API) et curseur de vitesse.
+- Lecteur audio intégré avec visualisation de la forme d'onde.
+- Bouton de téléchargement MP3.
+Ajoute Supabase :
+- Auth par lien magique.
+- Table voiceovers (id, user_id, texte_original, texte_corrige, audio_url, voix, created_at) avec Row Level Security.
+- Page /historique pour retrouver ses voix off.
+Donne-moi le SQL de migration.</pre></div>
         </div>
       </article>
 
       <article class="day">
-        <div class="day-head"><span class="day-n">J3</span><h3>Paiement, landing et mise en ligne</h3></div>
+        <div class="day-head"><span class="day-n">J3</span><h3>Score de qualité et re-génération</h3></div>
         <div class="day-body">
-          <ul><li>Intégrer Supabase pour l'auth et le stockage de configuration.</li><li>Intégrer Stripe pour l'abonnement mensuel.</li><li>Créer la page d'accueil en français.</li><li>Déployer sur Vercel + Railway.</li></ul>
-          <div class="done"><b>Fin de journée</b>Le produit est en ligne. Un visiteur peut s'inscrire, payer, configurer son widget et l'installer sur son site.</div>
+          <ul><li>Transcription du rendu audio et comparaison avec l'original.</li><li>Note par segment avec bouton re-générer.</li><li>Quota gratuit : 5 voix off par jour.</li></ul>
+          <div class="done"><b>Fin de journée</b>Chaque audio est noté segment par segment, et tu corriges les passages faibles en un clic.</div>
           <div class="prompt"><div class="prompt-bar"><span>Prompt Claude Code · J3</span><button class="copy" type="button">Copier</button></div>
-<pre>Intègre Supabase et Stripe au projet Next.js :
-- Auth par lien magique (email) avec Supabase.
-- Table widget_configs (id, user_id, color, position, welcome_text, discord_channel_id, discord_token_encrypted, plan) avec Row Level Security.
-- Stripe Checkout pour un abonnement « Solo » à 9 €/mois. Webhook /api/stripe/webhook qui met à jour le plan dans Supabase.
+<pre>Ajoute le scoring de qualité :
+- Route /api/score qui découpe le texte corrigé en segments (par phrase), transcrit l'audio généré (utilise l'API Whisper d'OpenAI ou la transcription ElevenLabs), et envoie à Claude un prompt de comparaison segment par segment.
+- Claude renvoie pour chaque segment : score (correct / douteux / à refaire), différence détectée, suggestion.
+- Interface : affiche les segments avec un code couleur (vert / orange / rouge) et un bouton « Re-générer ce segment » qui ne re-génère que le passage concerné.
+- Quota : vérifie côté serveur que les comptes gratuits ne dépassent pas 5 voix off par jour.
+- Page /reglages : l'utilisateur peut entrer sa propre clé ElevenLabs. Si présente, le quota ne s'applique pas.</pre></div>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="day-head"><span class="day-n">J4</span><h3>Paiement et mise en ligne</h3></div>
+        <div class="day-body">
+          <ul><li>Abonnement Pro avec Stripe.</li><li>Landing page avec démo interactive.</li><li>Déploiement sur Vercel.</li></ul>
+          <div class="done"><b>Fin de journée</b>Le produit est en ligne, prêt à être présenté et à vendre.</div>
+          <div class="prompt"><div class="prompt-bar"><span>Prompt Claude Code · J4</span><button class="copy" type="button">Copier</button></div>
+<pre>Intègre Stripe :
+- Stripe Checkout pour un abonnement mensuel « Pro » à 14 €.
+- Webhook qui met à jour le statut (free / pro) dans Supabase, y compris à la résiliation.
 - Portail client Stripe pour gérer l'abonnement.
-- Page d'accueil en français : titre accrocheur, démo animée du widget, 3 bénéfices (gratuit via Discord, 3 min d'installation, zéro donnée stockée), grille tarifaire (Gratuit 1 site / Solo 9 € illimité / Team 29 € + IA), FAQ.
-- Pages Mentions légales et Politique de confidentialité.
-Prépare le déploiement : liste des variables d'environnement pour Vercel et Railway, instructions de mise en production.</pre></div>
+Fonctions Pro : voix off illimitées, toutes les voix, export WAV, score de qualité, dictionnaire de prononciation personnel (mots que l'utilisateur ajoute avec leur prononciation).
+Crée la page d'accueil en français : titre accrocheur, démo interactive (champ de texte avec correction en direct), 3 bénéfices, grille tarifaire (Gratuit / Pro 14 € / Tes clés API), FAQ sur la confidentialité et le RGPD.
+Ajoute les pages Mentions légales et Politique de confidentialité, les métadonnées SEO, et la liste des variables d'environnement pour Vercel.</pre></div>
         </div>
       </article>
 
@@ -210,25 +225,25 @@ Prépare le déploiement : liste des variables d'environnement pour Vercel et Ra
   <section>
     <h2>Comment gagner de l'argent</h2>
     <div class="pricing">
-      <div class="tier"><span class="eyebrow">Gratuit</span><div class="price">0 €</div><p>1 site, 50 conversations par mois. Sert à faire découvrir le produit.</p></div>
-      <div class="tier hi"><span class="eyebrow">Solo</span><div class="price">9 € <small>/ mois</small></div><p>Sites et conversations illimités, personnalisation complète du widget.</p></div>
-      <div class="tier"><span class="eyebrow">Team</span><div class="price">29 € <small>/ mois</small></div><p>Agents illimités, historique complet, réponses IA automatiques avec Claude.</p></div>
+      <div class="tier"><span class="eyebrow">Gratuit</span><div class="price">0 €</div><p>5 voix off par jour, 1 voix, 30 secondes max. Sert à faire découvrir le produit.</p></div>
+      <div class="tier hi"><span class="eyebrow">Pro</span><div class="price">14 € <small>/ mois</small></div><p>Illimité, toutes les voix, export WAV, score de qualité, dictionnaire perso.</p></div>
+      <div class="tier"><span class="eyebrow">Tes clés</span><div class="price">0 €</div><p>L'utilisateur entre sa clé ElevenLabs. Pas de quota, pas de coût API pour toi.</p></div>
     </div>
   </section>
 
   <section>
     <h2>Les risques à connaître</h2>
     <div class="risk">
-      <div><b>Discord peut changer ses conditions</b><span>L'API est stable depuis des années, mais surveille les mises à jour. Plan B : ajouter le support Slack pour diversifier.</span></div>
-      <div><b>Latence du relay</b><span>Le serveur WebSocket ajoute un intermédiaire. Teste la latence et optimise la persistance des connexions dès le premier jour.</span></div>
-      <div><b>Marché de niche</b><span>Les gros clients n'utiliseront jamais Discord pour le support. Cible les indie makers, freelances et équipes de moins de 10 personnes.</span></div>
+      <div><b>Le coût des API</b><span>Chaque voix off appelle Claude (correction) + ElevenLabs (audio). Le quota gratuit et l'option « tes clés » protègent ta marge ; surveille ta facture dès la première semaine.</span></div>
+      <div><b>La qualité de la correction</b><span>Les noms très rares ou les termes techniques pointus peuvent être mal corrigés. Le dictionnaire personnel et la validation humaine avant génération limitent le risque.</span></div>
+      <div><b>Onepin a une avance technique</b><span>4 millions de mots dans son dictionnaire, 30+ moteurs TTS, certification SOC 2. Ton avantage n'est pas la technique, c'est la simplicité et le positionnement français.</span></div>
     </div>
   </section>
 
-  <section id="tous-les-plans"><h2>Tous les plans</h2><ul class="sc-list"><li><a href="https://mousta324.github.io/startup-clone-site/plans/008-deskcord/"><span class="sc-n">#008</span><span class="sc-t">Deskcord</span><span class="sc-d">plan du jour</span></a></li><li><a href="https://mousta324.github.io/startup-clone-site/plans/007-capybara-court/"><span class="sc-n">#007</span><span class="sc-t">Capybara Court</span><span class="sc-d">4 octobre 2026</span></a></li><li><a href="https://mousta324.github.io/startup-clone-site/plans/006-pexo/"><span class="sc-n">#006</span><span class="sc-t">Pexo</span><span class="sc-d">3 octobre 2026</span></a></li><li><a href="https://mousta324.github.io/startup-clone-site/plans/005-famulor/"><span class="sc-n">#005</span><span class="sc-t">Famulor</span><span class="sc-d">2 octobre 2026</span></a></li><li><a href="https://mousta324.github.io/startup-clone-site/plans/004-yedric/"><span class="sc-n">#004</span><span class="sc-t">Yedric</span><span class="sc-d">1 octobre 2026</span></a></li><li><a href="https://claude.ai/artifact/NLRBBGA9fPhv4h6kuEu6di"><span class="sc-n">#003</span><span class="sc-t">Ferndesk</span><span class="sc-d">30 septembre 2026</span></a></li><li><a href="https://claude.ai/artifact/2vZta6Uf9Cyio4M9UhrUWb"><span class="sc-n">#002</span><span class="sc-t">Hopscotch AI</span><span class="sc-d">29 septembre 2026</span></a></li><li><a href="https://claude.ai/artifact/1ZLknFNDQwHHDNBRA1fYm8"><span class="sc-n">#001</span><span class="sc-t">Cuey</span><span class="sc-d">28 septembre 2026</span></a></li></ul></section><footer>
+  <section id="tous-les-plans"><h2>Tous les plans</h2><ul class="sc-list"><li><a href="https://mousta324.github.io/startup-clone-site/plans/009-onepin/"><span class="sc-n">#009</span><span class="sc-t">Onepin</span><span class="sc-d">plan du jour</span></a></li><li><a href="https://mousta324.github.io/startup-clone-site/plans/008-deskcord/"><span class="sc-n">#008</span><span class="sc-t">Deskcord</span><span class="sc-d">5 octobre 2026</span></a></li><li><a href="https://mousta324.github.io/startup-clone-site/plans/007-capybara-court/"><span class="sc-n">#007</span><span class="sc-t">Capybara Court</span><span class="sc-d">4 octobre 2026</span></a></li><li><a href="https://mousta324.github.io/startup-clone-site/plans/006-pexo/"><span class="sc-n">#006</span><span class="sc-t">Pexo</span><span class="sc-d">3 octobre 2026</span></a></li><li><a href="https://mousta324.github.io/startup-clone-site/plans/005-famulor/"><span class="sc-n">#005</span><span class="sc-t">Famulor</span><span class="sc-d">2 octobre 2026</span></a></li><li><a href="https://mousta324.github.io/startup-clone-site/plans/004-yedric/"><span class="sc-n">#004</span><span class="sc-t">Yedric</span><span class="sc-d">1 octobre 2026</span></a></li><li><a href="https://claude.ai/artifact/NLRBBGA9fPhv4h6kuEu6di"><span class="sc-n">#003</span><span class="sc-t">Ferndesk</span><span class="sc-d">30 septembre 2026</span></a></li><li><a href="https://claude.ai/artifact/2vZta6Uf9Cyio4M9UhrUWb"><span class="sc-n">#002</span><span class="sc-t">Hopscotch AI</span><span class="sc-d">29 septembre 2026</span></a></li><li><a href="https://claude.ai/artifact/1ZLknFNDQwHHDNBRA1fYm8"><span class="sc-n">#001</span><span class="sc-t">Cuey</span><span class="sc-d">28 septembre 2026</span></a></li></ul></section><footer>
     <p class="big">Une nouvelle idée <span style="color:var(--lime)">chaque soir</span></p>
     <p class="muted">Suis <a href="https://www.instagram.com/startup.clone/">@startup.clone</a> sur Instagram, TikTok et YouTube. Commente BUILD sous une vidéo pour recevoir le plan suivant.</p>
-    <p class="small">Chiffres de traction observés sur Product Hunt le 3 octobre 2026. Les estimations de temps supposent des bases en développement web et l'usage de Claude Code.</p>
+    <p class="small">Chiffres de traction observés sur Product Hunt le 10 octobre 2026. Les clients affichés par Onepin (HeyGen, Hyundai, Johns Hopkins) sont ceux annoncés sur leur site, non vérifiés de façon indépendante. Les estimations de temps supposent des bases en développement web et l'usage de Claude Code.</p>
   </footer>
 </div>
 
