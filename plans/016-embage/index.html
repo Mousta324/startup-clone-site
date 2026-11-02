@@ -1,0 +1,305 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;background:#0A0A0F">
+<title>Plan BUILD #016 · Embage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#0A0A0F; --surface:#13131B; --surface-2:#1A1A25; --line:#2A2A3A;
+  --fg:#F2F2F6; --mute:#A0A0B4; --lime:#C8FF3D; --lime-ink:#0A0A0F; --violet:#8B6DFF; --warn:#FFB84D;
+  --display:"Anton",Impact,"Arial Narrow",sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6;margin:0;padding:0 18px}
+.wrap{max-width:760px;margin:0 auto;padding-block:40px 80px;display:flex;flex-direction:column;gap:56px}
+a{color:var(--lime)}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-weight:700;font-size:14px;color:var(--fg);text-decoration:none}
+.mk{position:relative;width:34px;height:34px;flex:none}
+.mk i{position:absolute;width:24px;height:24px;border-radius:6px}
+.mk i:first-child{left:0;top:0;border:3px solid var(--lime);opacity:.55}
+.mk i:last-child{left:10px;top:10px;background:var(--lime)}
+header{display:flex;flex-direction:column;gap:22px}
+.eyebrow{font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lime)}
+h1{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(44px,9vw,76px);line-height:.98;margin:0;text-wrap:balance}
+h1 em{font-style:normal;color:var(--lime)}
+.lede{font-size:19px;color:var(--mute);margin:0;max-width:62ch}
+.lede b{color:var(--fg)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.facts div{background:var(--surface);padding:16px 18px;min-width:0}
+.facts dt{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.facts dd{margin:4px 0 0;font-weight:800;font-size:20px;font-variant-numeric:tabular-nums}
+section{display:flex;flex-direction:column;gap:18px}
+h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(30px,5.5vw,40px);line-height:1.05;margin:0;text-wrap:balance}
+h3{font-size:19px;font-weight:800;margin:0}
+p{margin:0}
+.muted{color:var(--mute)}
+ul.clean{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+ul.clean li{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start}
+ul.clean li:before{content:"";width:12px;height:12px;margin-top:8px;border-radius:3px;background:var(--lime)}
+ul.clean li.out:before{background:transparent;border:2px solid var(--mute)}
+.angle{background:var(--lime);color:var(--lime-ink);border-radius:20px;padding:24px 26px;display:flex;flex-direction:column;gap:10px}
+.angle .eyebrow{color:var(--lime-ink);opacity:.7}
+.angle p{font-weight:700;font-size:19px;line-height:1.45}
+.mvp{display:grid;gap:12px}
+.feat{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;padding:18px 20px;background:var(--surface);border:1px solid var(--line);border-radius:16px}
+.feat .tag{grid-row:span 2;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--lime);border:1.5px solid var(--lime);border-radius:999px;padding:3px 10px;align-self:start;white-space:nowrap}
+.feat .tag.opt{color:var(--mute);border-color:var(--mute)}
+.feat p{color:var(--mute);font-size:15.5px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:15.5px}
+th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);background:var(--surface);font-weight:700}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:700;white-space:nowrap}
+td code{font-family:var(--mono);font-size:14px;color:var(--lime)}
+.days{display:flex;flex-direction:column;gap:18px}
+.day{border:1px solid var(--line);border-radius:20px;background:var(--surface);overflow:hidden}
+.day-head{display:flex;align-items:baseline;gap:16px;padding:20px 22px 0}
+.day-n{font-family:var(--display);font-size:46px;line-height:1;color:var(--lime);flex:none}
+.day-head h3{font-size:20px}
+.day-body{padding:14px 22px 22px;display:flex;flex-direction:column;gap:14px}
+.day-body ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.done{font-size:15px;color:var(--fg);background:var(--surface-2);border-radius:12px;padding:12px 14px}
+.done b{color:var(--lime);font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:2px}
+.prompt{border:1px dashed #3C3C52;border-radius:14px;background:var(--bg);overflow:hidden}
+.prompt-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px 10px 14px;border-bottom:1px dashed #3C3C52}
+.prompt-bar span{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--mute);text-transform:uppercase}
+.copy{font-family:var(--mono);font-size:13px;font-weight:700;background:var(--lime);color:var(--lime-ink);border:0;border-radius:999px;padding:7px 14px;cursor:pointer}
+.copy:focus-visible{outline:3px solid var(--violet);outline-offset:2px}
+.prompt pre{margin:0;padding:14px;font-family:var(--mono);font-size:13.5px;line-height:1.6;white-space:pre-wrap;word-break:break-word;color:#D8D8E4}
+.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.tier{padding:20px;border-radius:18px;border:1px solid var(--line);background:var(--surface);display:flex;flex-direction:column;gap:8px}
+.tier.hi{border-color:var(--lime);box-shadow:0 0 0 1px var(--lime) inset}
+.tier .price{font-family:var(--display);font-size:38px;line-height:1}
+.tier .price small{font-family:var(--body);font-size:14px;color:var(--mute);font-weight:500}
+.tier p{font-size:15px;color:var(--mute)}
+.risk{display:grid;gap:10px}
+.risk div{padding:14px 18px;border-left:3px solid var(--warn);background:var(--surface);border-radius:0 12px 12px 0}
+.risk b{display:block}
+.risk span{color:var(--mute);font-size:15.5px}
+footer{border-top:1px solid var(--line);padding-top:28px;display:flex;flex-direction:column;gap:14px}
+footer .big{font-family:var(--display);text-transform:uppercase;font-size:30px;line-height:1.05}
+.small{font-size:13.5px;color:var(--mute)}
+@media (prefers-reduced-motion:no-preference){.copy{transition:transform .15s}.copy:active{transform:scale(.96)}}
+</style>
+
+<div class="wrap">
+  <header>
+    <a class="brand" href="https://www.instagram.com/startup.clone/"><span class="mk"><i></i><i></i></span>@startup.clone</a>
+    <span class="eyebrow">Plan BUILD #016 · Veille du 1er novembre 2026</span>
+    <h1>Recrée <em>Embage</em> seul, en 5 jours</h1>
+    <p class="lede">Embage permet de créer un <b>agent IA (chat et voix)</b> sur ton site web, sans coder : il répond à tes clients, collecte leurs infos et orchestre des workflows. Voici le plan pour construire ta version française, avec Claude Code.</p>
+    <dl class="facts">
+      <div><dt>Traction</dt><dd>135 upvotes</dd></div>
+      <div><dt>Classement</dt><dd>#4 Product Hunt</dd></div>
+      <div><dt>Build estimé</dt><dd>5 jours</dd></div>
+      <div><dt>Difficulté</dt><dd>3 / 5</dd></div>
+    </dl>
+  </header>
+
+  <section>
+    <h2>Pourquoi c'est un bon pari</h2>
+    <ul class="clean">
+      <li><span><b>Un besoin universel.</b> <span class="muted">Un visiteur arrive, pose une question, personne ne répond — il part. 78 % des consommateurs français attendent une réponse en moins de 5 minutes.</span></span></li>
+      <li><span><b>Une demande prouvée.</b> <span class="muted">135 upvotes et #4 sur Product Hunt le jour du lancement. La veille, Knocket (live chat sans IA) prenait la #2 : la progression naturelle, c'est l'IA qui répond à ta place.</span></span></li>
+      <li><span><b>Aucun équivalent français abordable.</b> <span class="muted">Crisp facture l'IA à 95 €/mois. Brevo demande 800 €/mois. Personne ne propose un agent IA vocal no-code à moins de 20 €/mois en France.</span></span></li>
+      <li><span><b>Techniquement faisable.</b> <span class="muted">API Claude en streaming + Web Speech API (gratuit, natif navigateur) + ElevenLabs pour la voix. Pas de modèle à entraîner.</span></span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="angle">
+      <span class="eyebrow">Ton angle de différenciation</span>
+      <p>La version française, RGPD-native, à 19 €/mois : interface en français, données hébergées en UE (Supabase Francfort), voix française naturelle, et Mistral en option pour la souveraineté. Cible : indépendants, artisans, professions libérales qui n'ont pas de secrétaire.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Le MVP</h2>
+    <p class="muted">Cinq fonctionnalités, pas une de plus pour la première version.</p>
+    <div class="mvp">
+      <div class="feat"><span class="tag">MVP</span><h3>Widget chat IA</h3><p>Un script JS à coller. L'agent répond automatiquement via Claude, en streaming, sur n'importe quel site.</p></div>
+      <div class="feat"><span class="tag">MVP</span><h3>Agent voix</h3><p>Le visiteur clique sur un micro, parle dans le navigateur, l'IA répond oralement. Conversation vocale sans téléphone.</p></div>
+      <div class="feat"><span class="tag">MVP</span><h3>Base de connaissances</h3><p>Upload tes PDF, Word, CSV. L'agent y puise ses réponses grâce à une recherche sémantique.</p></div>
+      <div class="feat"><span class="tag">MVP</span><h3>Collecte de données</h3><p>Chaque conversation génère une fiche structurée : nom, email, besoin, score de qualité. Export CSV.</p></div>
+      <div class="feat"><span class="tag">MVP</span><h3>Dashboard</h3><p>Liste des conversations, fiches contact, personnalisation de l'agent (prompt, couleurs, avatar), analytics.</p></div>
+    </div>
+    <ul class="clean">
+      <li class="out"><span class="muted">Hors V1 : intégration Telegram/WhatsApp, multi-utilisateurs, API publique, workflows avancés.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>La stack</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Brique</th><th>Choix</th><th>Pourquoi</th></tr></thead>
+        <tbody>
+          <tr><td>Front + API</td><td><code>Next.js</code> + Tailwind</td><td>Un seul projet pour l'interface et les routes serveur.</td></tr>
+          <tr><td>IA (texte)</td><td>API Claude (<code>Sonnet 5.5</code>)</td><td>Streaming natif, excellent en français, coût raisonnable.</td></tr>
+          <tr><td>Voix (entrée)</td><td><code>Web Speech API</code></td><td>Gratuit, natif navigateur, zéro serveur vocal.</td></tr>
+          <tr><td>Voix (sortie)</td><td><code>ElevenLabs</code> Turbo v2</td><td>Voix française naturelle, latence &lt; 500 ms.</td></tr>
+          <tr><td>Base + Auth</td><td><code>Supabase</code> (Francfort)</td><td>Postgres, auth lien magique, Storage, RGPD natif.</td></tr>
+          <tr><td>Paiement</td><td><code>Stripe</code></td><td>Abonnement mensuel via Checkout, en quelques heures.</td></tr>
+          <tr><td>Hébergement</td><td><code>Vercel</code></td><td>Déploiement à chaque push, offre gratuite pour démarrer.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Le plan jour par jour</h2>
+    <p class="muted">Chaque jour a son prompt prêt à coller dans Claude Code. Lance-le dans un dossier vide, puis relis et teste avant de passer au suivant.</p>
+    <div class="days">
+
+      <article class="day">
+        <div class="day-head"><span class="day-n">J1</span><h3>Widget chat IA + backend</h3></div>
+        <div class="day-body">
+          <ul><li>Créer le projet Next.js + Supabase (région EU).</li><li>Tables agents, conversations, messages avec Row Level Security.</li><li>Route /api/chat : appelle Claude en streaming.</li><li>Widget JS (~8 ko) : bulle de chat en bas à droite.</li></ul>
+          <div class="done"><b>Fin de journée</b>Un widget s'affiche sur une page test et l'IA répond en temps réel.</div>
+          <div class="prompt"><div class="prompt-bar"><span>Prompt Claude Code · J1</span><button class="copy" type="button">Copier</button></div>
+<pre>Crée une application Next.js (App Router, TypeScript, Tailwind), interface en français.
+Intègre Supabase (région eu-central-1) avec les tables :
+- agents (id, user_id, name, system_prompt, avatar_url, colors JSON, created_at)
+- conversations (id, agent_id, visitor_id, status, metadata JSON, created_at)
+- messages (id, conversation_id, role, content, created_at)
+Active Row Level Security sur chaque table.
+Crée une route /api/chat qui reçoit {agent_id, conversation_id, message}, charge le system_prompt de l'agent, appelle Claude Sonnet en streaming via le SDK Anthropic, et renvoie la réponse en streaming (ReadableStream).
+Crée un composant Widget (iframe-ready) : bulle en bas à droite, champ de saisie, messages en temps réel avec streaming. Le widget est exportable via un script JS autonome qui s'injecte sur n'importe quel site.
+Gère les erreurs : si Claude échoue, affiche un message d'excuse et propose un email de contact.
+Ajoute un fichier .env.example et un README.</pre></div>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="day-head"><span class="day-n">J2</span><h3>Voix + base de connaissances</h3></div>
+        <div class="day-body">
+          <ul><li>Web Speech API pour la transcription vocale.</li><li>ElevenLabs Turbo pour la synthèse française.</li><li>Upload de documents + découpage en chunks.</li><li>Recherche sémantique (pgvector) avant chaque réponse.</li></ul>
+          <div class="done"><b>Fin de journée</b>Tu parles dans le widget, l'IA te répond avec la voix et se base sur tes documents.</div>
+          <div class="prompt"><div class="prompt-bar"><span>Prompt Claude Code · J2</span><button class="copy" type="button">Copier</button></div>
+<pre>Ajoute deux fonctionnalités au projet :
+
+1. Agent voix :
+- Bouton micro dans le widget qui utilise la Web Speech API (lang: "fr-FR") pour transcrire la voix du visiteur en texte.
+- Le texte est envoyé à /api/chat comme un message normal.
+- La réponse de Claude est convertie en audio via l'API ElevenLabs (modèle Turbo v2, voix française) et jouée automatiquement dans le widget.
+- Indicateur visuel pendant l'écoute et la synthèse.
+
+2. Base de connaissances :
+- Page /dashboard/knowledge : upload de fichiers PDF, Word, CSV (Supabase Storage).
+- À l'upload, découpe chaque document en chunks de ~1 000 tokens.
+- Stocke les chunks + leurs embeddings dans une table knowledge_chunks avec pgvector.
+- Dans /api/chat, avant d'appeler Claude, cherche les 5 chunks les plus proches du message et injecte-les dans le contexte système.
+- Affiche les sources utilisées sous chaque réponse.</pre></div>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="day-head"><span class="day-n">J3</span><h3>Collecte de données + dashboard</h3></div>
+        <div class="day-body">
+          <ul><li>Extraction structurée en fin de conversation.</li><li>Score de qualité automatique.</li><li>Dashboard complet avec fiches et filtres.</li><li>Personnalisation de l'agent.</li></ul>
+          <div class="done"><b>Fin de journée</b>Chaque conversation génère une fiche contact exploitable, visible dans le dashboard.</div>
+          <div class="prompt"><div class="prompt-bar"><span>Prompt Claude Code · J3</span><button class="copy" type="button">Copier</button></div>
+<pre>Ajoute au projet :
+
+1. Collecte de données :
+- À la fin de chaque conversation (quand le visiteur part ou après 2 min d'inactivité), appelle Claude avec l'historique pour extraire un JSON structuré : {name, email, phone, need, sentiment, quality_score}.
+- Table contacts (id, agent_id, conversation_id, data JSON, score, created_at).
+- Le score quality_score (0-100) évalue si la demande a été résolue.
+
+2. Dashboard /dashboard :
+- Page /dashboard/conversations : liste des conversations avec filtres (date, score, statut), clic pour voir le détail.
+- Page /dashboard/contacts : fiches contact extraites, recherche, export CSV.
+- Page /dashboard/settings : personnalisation de l'agent (nom, prompt système, avatar upload, couleurs du widget en JSON).
+- Stats en haut : conversations aujourd'hui, score moyen, contacts collectés.</pre></div>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="day-head"><span class="day-n">J4</span><h3>Comptes + paiement</h3></div>
+        <div class="day-body">
+          <ul><li>Auth par lien magique (Supabase).</li><li>Stripe Checkout pour le plan Pro.</li><li>Quota gratuit et gestion des limites.</li></ul>
+          <div class="done"><b>Fin de journée</b>Un utilisateur s'inscrit, teste gratuitement, et peut passer en Pro.</div>
+          <div class="prompt"><div class="prompt-bar"><span>Prompt Claude Code · J4</span><button class="copy" type="button">Copier</button></div>
+<pre>Intègre l'authentification et le paiement :
+
+1. Auth Supabase :
+- Connexion par lien magique (email).
+- Middleware qui protège les routes /dashboard/*.
+- Table profiles (id, email, plan, stripe_customer_id, created_at).
+
+2. Stripe :
+- Stripe Checkout pour l'abonnement Pro à 19 €/mois.
+- Webhook /api/stripe qui met à jour le plan (free → pro) dans Supabase, y compris à la résiliation.
+- Portail client Stripe pour gérer l'abonnement.
+
+3. Quotas (vérifiés côté serveur) :
+- Gratuit : 1 agent, 50 conversations texte/mois, pas de voix, badge "Propulsé par [Nom]".
+- Pro : agents illimités, voix, base de connaissances, export CSV, widget sans badge.
+- Affiche un compteur dans le dashboard et un message dans le widget quand le quota est atteint.</pre></div>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="day-head"><span class="day-n">J5</span><h3>Landing page + mise en ligne</h3></div>
+        <div class="day-body">
+          <ul><li>Page d'accueil en français.</li><li>Pages légales et SEO.</li><li>Script d'installation et déploiement.</li></ul>
+          <div class="done"><b>Fin de journée</b>Le produit est en ligne, prêt à être utilisé et vendu.</div>
+          <div class="prompt"><div class="prompt-bar"><span>Prompt Claude Code · J5</span><button class="copy" type="button">Copier</button></div>
+<pre>Crée la page d'accueil en français :
+- Titre accrocheur : "Ton site répond à tes clients. Même à 3h du matin."
+- Démo interactive : un widget de chat fonctionnel directement sur la landing (agent démo).
+- 3 bénéfices illustrés : réponse instantanée, voix naturelle, données collectées.
+- Grille tarifaire : Gratuit (0 €) / Pro (19 €/mois) / Business (49 €/mois).
+- FAQ centrée sur la confidentialité, le RGPD et la qualité des réponses IA.
+- Témoignage placeholder.
+Ajoute les pages Mentions légales et Politique de confidentialité.
+Métadonnées SEO, sitemap.xml, images Open Graph.
+Script d'installation : page /dashboard/install avec le snippet JS à copier-coller, instructions WordPress.
+Prépare le déploiement Vercel : liste toutes les variables d'environnement.</pre></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Comment gagner de l'argent</h2>
+    <div class="pricing">
+      <div class="tier"><span class="eyebrow">Gratuit</span><div class="price">0 €</div><p>1 agent, 50 conversations texte/mois. Sert à prouver la valeur et acquérir des utilisateurs.</p></div>
+      <div class="tier hi"><span class="eyebrow">Pro</span><div class="price">19 € <small>/ mois</small></div><p>Agents illimités, voix, base de connaissances, export, widget sans badge.</p></div>
+      <div class="tier"><span class="eyebrow">Business</span><div class="price">49 € <small>/ mois</small></div><p>Multi-utilisateurs, Telegram, WhatsApp, API, analytics avancés.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Les risques à connaître</h2>
+    <div class="risk">
+      <div><b>Le coût de la voix</b><span>ElevenLabs facture ~0,01 € par réponse vocale. Le quota gratuit (texte uniquement) protège ta marge. Surveille ta facture dès la première semaine.</span></div>
+      <div><b>La qualité des réponses IA</b><span>L'agent peut se tromper ou halluciner. Prévois un disclaimer visible et un bouton « Parler à un humain » pour les cas critiques.</span></div>
+      <div><b>La concurrence existe</b><span>Crisp, Intercom, et Embage eux-mêmes. Ton avantage n'est pas la technique : c'est le prix (19 € vs 95 €+), la voix française, et le positionnement TPE/PME.</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="big">Une nouvelle idée <span style="color:var(--lime)">chaque soir</span></p>
+    <p class="muted">Suis <a href="https://www.instagram.com/startup.clone/">@startup.clone</a> sur Instagram, TikTok et YouTube. Commente BUILD sous une vidéo pour recevoir le plan suivant.</p>
+    <p class="small">Chiffres de traction observés sur Product Hunt le 1er novembre 2026. Les estimations de temps supposent des bases en développement web et l'usage de Claude Code.</p>
+  </footer>
+</div>
+
+<script>
+document.querySelectorAll('.copy').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const pre=btn.closest('.prompt').querySelector('pre');
+    const done=()=>{btn.textContent='Copié';setTimeout(()=>btn.textContent='Copier',1600)};
+    const fallback=()=>{const r=document.createRange();r.selectNodeContents(pre);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Sélectionné';setTimeout(()=>btn.textContent='Copier',1600)};
+    try{navigator.clipboard.writeText(pre.textContent).then(done,fallback)}catch(e){fallback()}
+  });
+});
+</script>
+
+</body></html>
